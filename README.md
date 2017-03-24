@@ -22,7 +22,8 @@ the order in pattern.txt, starting from 0) and offset in main string
 This will read pattern instruction(in 0,1 form) from pattern.txt
 and scan for it in the specified file by specified granularity(in bits). 
 (for example, if you believe an instruction can't start at the middle of
-a byte, you set the GRANULARITY to 8)
+a byte, you set the GRANULARITY to 8)(please don't set this value too high,
+the memory consumption is at the level of 2^G)
 All matched instruction index and offset(by bit, no matter what granularity)
 in the file will be printed. This tool is unable to recognize the file format, 
 so if you want results in a specific section, filter the result yourself.
