@@ -180,7 +180,7 @@ static void run(struct task_data* t, struct node** np)
 	struct node* r = t->root;
 	do
 	{
-		if (n->tail)
+		if (n->is_tail)
 			t->t->found_callback(t->t, n->index, t->total_offset-1);
 		if ((!next) && (n->sub[c]!=r))
 			next = n->sub[c];
@@ -188,7 +188,11 @@ static void run(struct task_data* t, struct node** np)
 	}
 	while (n!=r)
 	if (!next)
-		next = r;
+		if (r->sub[c]!=r)
+			next = r->sub[c];
+		else
+			next = r;
+
 	*np = next;
 }
 
